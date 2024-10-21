@@ -53,20 +53,12 @@ export class CreateStudentDto {
 
   @ApiProperty({ example: 'abdulazizikromov09@gmail.com', description: 'Student email' })
   @IsOptional()
-  @IsEmail({}, { message: 'Invalid email format' })  // Use IsEmail for stricter validation
   readonly email: string;
 
   @ApiProperty({ example: '2022-12-03', description: 'Student birth date' })
   readonly birth_date: Date;
 
   @ApiProperty({ example: 'male', description: 'Student gender' })
-  @IsEnum(['male', 'female'], { message: 'Gender must be male or female' })  // Use IsEnum to validate specific values
   readonly gender: string;
 }
 
-
-export class FilterStudentDto {
-  @IsOptional()
-  @IsString()
-  cause?: string;
-}

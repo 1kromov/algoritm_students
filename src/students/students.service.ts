@@ -1,14 +1,14 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { Student } from './student.model';
-import { CreateStudentDto, FilterStudentDto } from './dto/create-student.dto';
+import { CreateStudentDto } from './dto/create-student.dto';
 import { UpdateStudentDto } from './dto/update-student.dto';
 import { Op } from 'sequelize';
 @Injectable()
 export class StudentService {
   constructor(
     @InjectModel(Student) private studentRepository: typeof Student,
-  ) { }
+  ) {}
   async create(createStudentDto: CreateStudentDto) {
     return await this.studentRepository.create(createStudentDto);
   }
@@ -61,7 +61,7 @@ export class StudentService {
         },
       },
     });
-    return student
+    return student;
   }
   async filterByReasonOfStudy(query: string) {
     const student = await this.studentRepository.findAll({
@@ -71,7 +71,7 @@ export class StudentService {
         },
       },
     });
-    return student
+    return student;
   }
   async filterByLengthofStudy(query: string) {
     const student = await this.studentRepository.findAll({
@@ -81,7 +81,7 @@ export class StudentService {
         },
       },
     });
-    return student
+    return student;
   }
 
   async filterByLiked(query: string) {
@@ -92,7 +92,6 @@ export class StudentService {
         },
       },
     });
-    return student
+    return student;
   }
-
 }
